@@ -1,0 +1,18 @@
+// ========================================
+// utilities
+// ========================================
+
+.hover-default {
+	@include animation {
+		transition: $transition-primary;
+		transition-property: opacity;
+	}
+
+	@include hover {
+		opacity: 0.6;
+	}
+}
+
+.hidden {
+	@include hidden;
+}

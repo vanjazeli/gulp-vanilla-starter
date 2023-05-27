@@ -1,11 +1,3 @@
-class Person {
-	constructor(name, age) {
-		this.name = name;
-		this.age = age;
-		this.printName = () => {
-			console.log(this.name);
-		};
-	}
-}
+import documentLoaded from './chunks/documentLoaded';
 
-const johnDoe = new Person('John Doe', 22);
+documentLoaded.init();

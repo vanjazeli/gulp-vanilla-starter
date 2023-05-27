@@ -9,7 +9,6 @@ const browserSync = require('browser-sync').create();
 const webpack = require('webpack-stream');
 const eslint = require('gulp-eslint');
 
-// watch
 gulp.task('watch', () => {
 	browserSync.init({
 		notify: false,
@@ -22,7 +21,6 @@ gulp.task('watch', () => {
 	gulp.watch('./src/*.html').on('change', gulp.series('html', browserSync.reload));
 });
 
-// javascript
 gulp.task('javascript', () => {
 	return gulp
 		.src('./src/js/**/*.js')
@@ -54,7 +52,6 @@ gulp.task('javascript', () => {
 		.pipe(gulp.dest('./dist/js'));
 });
 
-// styles
 gulp.task('lint', () => {
 	return gulp
 		.src('./src/styles/**/*.scss')
@@ -65,7 +62,7 @@ gulp.task('lint', () => {
 
 gulp.task(
 	'styles',
-	gulp.series('lint', function resolveStyles() {
+	gulp.series('lint', function stylePrep() {
 		return gulp
 			.src('./src/styles/**/*.scss')
 			.pipe(sass())
@@ -75,10 +72,9 @@ gulp.task(
 			.pipe(browserSync.stream());
 	})
 );
-// html
+
 gulp.task('html', () => {
 	return gulp.src('src/*.{html,ico}').pipe(gulp.dest('./dist'));
 });
 
-// default
 gulp.task('default', gulp.series('javascript', 'html', 'styles', 'watch'));

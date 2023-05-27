@@ -1,0 +1,90 @@
+// ========================================
+// mixins
+// ========================================
+
+// helpers
+
+@mixin flex-c-c {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+@mixin flex-sb-c {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+// utilities
+
+$desktop: 992px;
+$tablet: 768px;
+
+@mixin desktop {
+	@media screen and (min-width: calc(#{$desktop} + 1px)) {
+		@content;
+	}
+}
+
+@mixin tablet {
+	@media screen and (min-width: $tablet) and (max-width: $desktop) {
+		@content;
+	}
+}
+
+@mixin phone {
+	@media screen and (max-width: calc(#{$tablet} - 1px)) {
+		@content;
+	}
+}
+
+@mixin large {
+	@media screen and (min-width: $tablet) {
+		@content;
+	}
+}
+
+@mixin small {
+	@media screen and (max-width: $desktop) {
+		@content;
+	}
+}
+
+
+@mixin hover {
+	&:hover {
+		@media screen and (min-width: calc(#{$desktop} + 1px)) {
+			@content;
+		}
+	}
+}
+
+@mixin animation {
+	.loaded & {
+		@content;
+	}
+}
+
+@mixin hidden {
+	margin: -1px;
+	outline: 0;
+	border: 0;
+	padding: 0;
+	height: 1px;
+	width: 1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	clip: rect(0 0 0 0);
+}
+
+@mixin responsive-font($min-s, $max-s, $min-w, $max-w) {
+	font-size: #{$min-s}px;
+	@media all and (min-width: #{$min-w}px) and (max-width: #{$max-w}px) {
+		font-size: calc(#{$min-s}px + (#{$max-s} - #{$min-s}) * (100vw - #{$min-w}px) / (#{$max-w} - #{$min-w}));
+	}
+	@media all and (min-width: #{$max-w}px) {
+		font-size: #{$max-s}px;
+	}
+}

@@ -1,18 +1,18 @@
 options:
   formatter: stylish
 files:
-  include: "**/*.s+(a|c)ss"
+  include: '**/*.s+(a|c)ss'
   ignore:
-    - "src/scss/helpers/_print.scss"
-    - "src/scss/helpers/_mixins.scss"
-    - "src/scss/layout/_sprite.scss"
-    - "src/scss/layout/_icon-font.scss"
-    - "src/scss/layout/_svg-sprite.scss"
-    - "src/scss/config/_reset.scss"
-    - "src/scss/base/_grid-layout.scss"
-    - "src/scss/base/_grid-framework.scss"
-    - "src/scss/base/_fonts.scss"
-    - "src/scss/plugins/*.scss"
+    - 'src/scss/helpers/_print.scss'
+    - 'src/scss/helpers/_mixins.scss'
+    - 'src/scss/layout/_sprite.scss'
+    - 'src/scss/layout/_icon-font.scss'
+    - 'src/scss/layout/_svg-sprite.scss'
+    - 'src/scss/config/_reset.scss'
+    - 'src/scss/base/_grid-layout.scss'
+    - 'src/scss/base/_grid-framework.scss'
+    - 'src/scss/base/_fonts.scss'
+    - 'src/scss/plugins/*.scss'
 
 rules:
   attribute-quotes: 2
@@ -24,7 +24,6 @@ rules:
     - convention: hyphenatedbem
   clean-import-paths: 2
   empty-args: 2
-  # TODO
   empty-line-between-blocks:
     - 0
     - allow-single-line-rulesets: true
@@ -90,7 +89,6 @@ rules:
   space-after-bang: 2
   space-after-colon: 2
   space-after-comma: 2
-  # TODO
   space-around-operator: 0
   space-before-bang: 2
   space-before-brace: 2
