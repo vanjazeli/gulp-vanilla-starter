@@ -42,7 +42,7 @@ gulp.task("javascript", () => {
               use: {
                 loader: "babel-loader",
                 options: {
-                  presets: ["@babel/preset-env"],
+                  babelrc: true,
                 },
               },
             },
