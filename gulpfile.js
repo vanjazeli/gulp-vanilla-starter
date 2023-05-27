@@ -16,5 +16,10 @@ gulp.task("styles", () => {
     .pipe(browserSync.stream());
 });
 
+// html
+gulp.task("html", () => {
+  return gulp.src("src/*.{html,ico}").pipe(gulp.dest("./dist"));
+});
+
 // default
-gulp.task("default", gulp.series("styles"));
+gulp.task("default", gulp.series("styles", "html"));
