@@ -7,6 +7,23 @@ const browserSync = require("browser-sync").create();
 
 const webpack = require("webpack-stream");
 
+// watch
+gulp.task("watch", () => {
+  browserSync.init({
+    notify: false,
+    server: {
+      baseDir: "./dist",
+    },
+  });
+  gulp.watch("./src/scss/**/*.scss").on("change", gulp.series("styles"));
+  gulp
+    .watch("./src/js/**/*.js")
+    .on("change", gulp.series("javascript", browserSync.reload));
+  gulp
+    .watch("./src/*.html")
+    .on("change", gulp.series("html", browserSync.reload));
+});
+
 // javascript
 gulp.task("javascript", () => {
   return gulp
@@ -53,4 +70,4 @@ gulp.task("html", () => {
 });
 
 // default
-gulp.task("default", gulp.series("styles", "javascript", "html"));
+gulp.task("default", gulp.series("styles", "javascript", "html", "watch"));
