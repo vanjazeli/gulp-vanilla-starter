@@ -1,0 +1,7 @@
+{
+	"functionParentheses": false,
+	"singleQuote": true,
+	"tabWidth": 2,
+	"printWidth": 9999,
+	"useTabs": true
+}
