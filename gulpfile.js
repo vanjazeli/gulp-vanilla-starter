@@ -5,6 +5,37 @@ const autoprefixer = require("autoprefixer");
 const cleanCSS = require("gulp-clean-css");
 const browserSync = require("browser-sync").create();
 
+const webpack = require("webpack-stream");
+
+// javascript
+gulp.task("javascript", () => {
+  return gulp
+    .src("./src/js/**/*.js")
+    .pipe(
+      webpack({
+        mode: "production",
+        output: {
+          filename: "main.js",
+        },
+        module: {
+          rules: [
+            {
+              test: /\.js$/,
+              exclude: /node_modules/,
+              use: {
+                loader: "babel-loader",
+                options: {
+                  presets: ["@babel/preset-env"],
+                },
+              },
+            },
+          ],
+        },
+      })
+    )
+    .pipe(gulp.dest("./dist/js"));
+});
+
 // styles
 gulp.task("styles", () => {
   return gulp
@@ -22,4 +53,4 @@ gulp.task("html", () => {
 });
 
 // default
-gulp.task("default", gulp.series("styles", "html"));
+gulp.task("default", gulp.series("styles", "javascript", "html"));
