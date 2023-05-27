@@ -3,7 +3,7 @@ const sass = require("gulp-sass")(require("sass"));
 const postcss = require("gulp-postcss");
 const autoprefixer = require("autoprefixer");
 const cleanCSS = require("gulp-clean-css");
-const stylelint = require("gulp-stylelint");
+const sassLint = require("gulp-sass-lint");
 const browserSync = require("browser-sync").create();
 
 const webpack = require("webpack-stream");
@@ -16,7 +16,7 @@ gulp.task("watch", () => {
       baseDir: "./dist",
     },
   });
-  gulp.watch("./src/scss/**/*.scss").on("change", gulp.series("styles"));
+  gulp.watch("./src/styles/**/*.scss").on("change", gulp.series("styles"));
   gulp
     .watch("./src/js/**/*.js")
     .on("change", gulp.series("javascript", browserSync.reload));
@@ -31,7 +31,7 @@ gulp.task("javascript", () => {
     .src("./src/js/**/*.js")
     .pipe(
       webpack({
-        mode: "production",
+        mode: "development",
         output: {
           filename: "main.js",
         },
@@ -56,18 +56,18 @@ gulp.task("javascript", () => {
 
 // styles
 gulp.task("lint", () => {
-  return gulp.src("./src/scss/**/*.scss").pipe(
-    stylelint({
-      reporters: [{ formatter: "string", console: true }],
-    })
-  );
+  return gulp
+    .src("./src/styles/**/*.scss")
+    .pipe(sassLint({ configFile: "sass-lint.yaml" }))
+    .pipe(sassLint.format())
+    .pipe(sassLint.failOnError());
 });
 
 gulp.task(
   "styles",
-  gulp.series("lint", () => {
+  gulp.series("lint", function resolveStyles() {
     return gulp
-      .src("./src/scss/**/*.scss")
+      .src("./src/styles/**/*.scss")
       .pipe(sass())
       .pipe(postcss([autoprefixer("last 2 versions")]))
       .pipe(cleanCSS())
