@@ -39,18 +39,17 @@ $tablet: 768px;
 	}
 }
 
-@mixin large {
+@mixin large {	// tablet and desktop
 	@media screen and (min-width: $tablet) {
 		@content;
 	}
 }
 
-@mixin small {
+@mixin small {	// phone and tablet
 	@media screen and (max-width: $desktop) {
 		@content;
 	}
 }
-
 
 @mixin hover {
 	&:hover {

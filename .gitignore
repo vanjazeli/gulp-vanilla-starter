@@ -13,6 +13,8 @@ dist-ssr
 *.local
 
 src/styles/iconfont/_iconfont.scss
+src/assets/fonts/svgicons.ttf
+src/assets/fonts/svgicons.woff
 
 # Editor directories and files
 .vscode/*

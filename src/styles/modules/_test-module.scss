@@ -1,15 +1,3 @@
 // ========================================
 // test-module
 // ========================================
-
-.big-icon {
-    font-size: 40px;
-    color: #f00;
-    @include animation {
-        transition: $transition-primary;
-        transition-property: color;
-    }
-    &:hover {
-        color: #bbb;
-    }
-}
