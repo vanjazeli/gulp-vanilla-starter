@@ -33,8 +33,8 @@ gulp.task('iconfont', () => {
 			iconfontCss({
 				fontName: 'svgicons',
 				cssClass: 'icon',
-				path: './src/styles/iconfont-template/iconfont.scss',
-				targetPath: '../../../src/styles/base/_iconfont.scss',
+				path: './src/styles/iconfont/iconfont-template.scss',
+				targetPath: '../../../src/styles/iconfont/_iconfont.scss',
 				fontPath: '../assets/fonts/',
 			})
 		)
@@ -95,7 +95,7 @@ gulp.task('javascript', () => {
 
 gulp.task('lint', () => {
 	return gulp
-		.src(['./src/styles/**/*.scss', '!./src/styles/base/_iconfont.scss', '!./src/styles/iconfont-template/iconfont.scss'])
+		.src(['./src/styles/**/*.scss', '!./src/styles/iconfont/_iconfont.scss', '!./src/styles/iconfont/iconfont-template.scss'])
 		.pipe(sassLint({ configFile: 'sass-lint.yaml' }))
 		.pipe(sassLint.format())
 		.pipe(sassLint.failOnError());
@@ -105,7 +105,7 @@ gulp.task(
 	'styles',
 	gulp.series('lint', function stylePrep() {
 		return gulp
-			.src(['./src/styles/**/*.scss', '!./src/styles/iconfont-template/iconfont.scss'])
+			.src(['./src/styles/**/*.scss', '!./src/styles/iconfont/iconfont-template.scss'])
 			.pipe(sass())
 			.pipe(postcss([autoprefixer('last 2 versions')]))
 			.pipe(cleanCSS())

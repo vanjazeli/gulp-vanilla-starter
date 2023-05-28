@@ -12,7 +12,7 @@ dist
 dist-ssr
 *.local
 
-src/styles/base/_iconfont.scss
+src/styles/iconfont/_iconfont.scss
 
 # Editor directories and files
 .vscode/*
