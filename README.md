@@ -1,0 +1,59 @@
+# Gulp Vanilla Starter
+
+This Gulp Project Starter is a preconfigured boilerplate for quickly setting up new vanilla projects using Gulp, featuring support for Babel, linting, iconfont generation, and more. This starter kit streamlines the initial setup process, enabling developers to focus on building their projects rather than spending time on repetitive configurations.
+
+## Features
+
+- **Gulp Automation**: Automate repetitive tasks and streamline your development workflow using Gulp.
+- **Babel Support**: Write modern JavaScript code using the latest ECMAScript standards and let Babel transpile it for maximum browser compatibility.
+- **Sass Compilation**: Compile your SASS or SCSS files into optimized and browser-compatible CSS stylesheets.
+- **Sass Linting**: Catch errors, avoid repetition, enforce coding standards, and improve the quality of your Sass or SCSS code with Sass linting.
+- **Autoprefixer**: Automatically add vendor prefixes to your CSS properties for improved browser compatibility.
+- **ESLint**: Ensure your JavaScript code follows best practices, catches errors, and enforces coding standards with ESLint integration.
+- **Iconfont Generation**: Generate custom icon fonts, allowing for easy integration of icons into your project.
+- **Code formatting**: Maintain consistent code formatting. Customize formatting rules using .prettierrc and ignore specific files or directories with .prettierignore.
+- **Optimization and Minification**: Optimize and minify your CSS, and JavaScript files for improved performance.
+
+## Getting Started
+
+### Initialization
+
+- Make sure to open the root directory of this project and open a terminal of your choice inside it.
+- Run `npm install gulp gulp-cli -g` command to install gulp and gulp-cli globally.
+- Run `npm install` command to install all of the npm packages used in this starter.
+
+Your starter is ready for use.
+
+### Commands
+
+#### Development mode - `npm run dev`
+
+This command initiates the development mode build process of the project. This mode prioritizes efficiency by skipping minification and code optimization processes, allowing developers to save time during the development phase.
+
+Upon execution, the project is built inside the designated "dist" folder. Additionally, the command sets up an automatic watch mechanism on the "src" folder, monitoring for any changes in the source code.
+
+As changes are detected, the "npm run dev" command triggers an immediate rebuild of the project, updating the contents of the "dist" folder accordingly. Consequently, developers can conveniently view and interact with the latest version of the project in their preferred browser, leveraging the updated code within the "dist" folder.
+
+#### Production mode - `npm run prod`
+
+This command initiates the production mode build process of the project. In this mode, the code goes through important optimizations, like preprocessing and minification, to ensure it runs efficiently and takes up less space. However, these optimizations make the build process take a bit longer, as it requires careful handling of the code.
+
+Once executed, the project is built inside the designated "dist" folder, following industry best practices for organizing and structuring code for production. Additionally, the command sets up an automatic watch feature, keeping an eye on the source code located in the "src" folder.
+
+The purpose of this mode is to build the project's final version. However, even after the build, the watch feature remains active for the 'src' folder, in case you want to do some testing in this mode.
+
+#### Generating icons - `npm run icons`
+
+This command generates a new icon font using all the .svg icons from the 'src/assets/icons' folder. It also generates the class names for each of the icons. After generating these assets, the styles containing icon class names and the newly generated font get added to the 'dist' folder. This allows developers to easily incorporate and style the icons in their project.
+
+#### Moving assets - `npm run assets`
+
+The command moves all subfolders from the 'src/assets' directory to the 'dist/assets' directory, except for the 'icons' folder, since it's only used to generate the icon font.
+
+## Credits
+
+- [Unsplash](https://unsplash.com/)
+
+## Licence
+
+Completely free for use in all types of commercial or personal projects. Mentions are required when uploading or reposting any of original or modified code from this repo.
