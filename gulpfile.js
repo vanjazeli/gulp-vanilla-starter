@@ -9,6 +9,11 @@ const browserSync = require('browser-sync').create();
 const webpack = require('webpack-stream');
 const eslint = require('gulp-eslint');
 
+const iconfont = require('gulp-iconfont');
+const iconfontCss = require('gulp-iconfont-css');
+
+const fs = require('fs-extra');
+
 gulp.task('watch', () => {
 	browserSync.init({
 		notify: false,
@@ -19,6 +24,42 @@ gulp.task('watch', () => {
 	gulp.watch('./src/styles/**/*.scss').on('change', gulp.series('styles'));
 	gulp.watch('./src/js/**/*.js').on('change', gulp.series('javascript', browserSync.reload));
 	gulp.watch('./src/*.html').on('change', gulp.series('html', browserSync.reload));
+});
+
+gulp.task('iconfont', () => {
+	return gulp
+		.src('./src/assets/icons/*.svg')
+		.pipe(
+			iconfontCss({
+				fontName: 'svgicons',
+				cssClass: 'icon',
+				path: './src/styles/iconfont-template/iconfont.scss',
+				targetPath: '../../../src/styles/base/_iconfont.scss',
+				fontPath: '../assets/fonts/',
+			})
+		)
+		.pipe(
+			iconfont({
+				fontName: 'svgicons',
+				prependUnicode: false,
+				formats: ['ttf', 'woff'],
+				normalize: true,
+				centerHorizontally: true,
+			})
+		)
+		.on('glyphs', function (glyphs, options) {
+			console.log(glyphs, options);
+		})
+		.pipe(gulp.dest('./src/assets/fonts'));
+});
+
+gulp.task('assets', () => {
+	return gulp
+		.src('./src/assets/**')
+		.pipe(gulp.dest('./dist/assets'))
+		.on('end', () => {
+			fs.remove('./dist/assets/icons');
+		});
 });
 
 gulp.task('javascript', () => {
@@ -54,7 +95,7 @@ gulp.task('javascript', () => {
 
 gulp.task('lint', () => {
 	return gulp
-		.src('./src/styles/**/*.scss')
+		.src(['./src/styles/**/*.scss', '!./src/styles/base/_iconfont.scss', '!./src/styles/iconfont-template/iconfont.scss'])
 		.pipe(sassLint({ configFile: 'sass-lint.yaml' }))
 		.pipe(sassLint.format())
 		.pipe(sassLint.failOnError());
@@ -64,7 +105,7 @@ gulp.task(
 	'styles',
 	gulp.series('lint', function stylePrep() {
 		return gulp
-			.src('./src/styles/**/*.scss')
+			.src(['./src/styles/**/*.scss', '!./src/styles/iconfont-template/iconfont.scss'])
 			.pipe(sass())
 			.pipe(postcss([autoprefixer('last 2 versions')]))
 			.pipe(cleanCSS())
@@ -77,4 +118,4 @@ gulp.task('html', () => {
 	return gulp.src('src/*.{html,ico}').pipe(gulp.dest('./dist'));
 });
 
-gulp.task('default', gulp.series('javascript', 'html', 'styles', 'watch'));
+gulp.task('default', gulp.series('javascript', 'html', 'iconfont', 'assets', 'styles', 'watch'));
