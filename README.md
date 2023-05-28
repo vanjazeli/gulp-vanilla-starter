@@ -5,11 +5,12 @@ This Gulp Project Starter is a preconfigured boilerplate for quickly setting up 
 ## Features
 
 - **Gulp Automation**: Automate repetitive tasks and streamline your development workflow using Gulp.
-- **Babel Support**: Write modern JavaScript code using the latest ECMAScript standards and let Babel transpile it for maximum browser compatibility.
 - **Sass Compilation**: Compile your SASS or SCSS files into optimized and browser-compatible CSS stylesheets.
 - **Sass Linting**: Catch errors, avoid repetition, enforce coding standards, and improve the quality of your Sass or SCSS code with Sass linting.
 - **Autoprefixer**: Automatically add vendor prefixes to your CSS properties for improved browser compatibility.
 - **ESLint**: Ensure your JavaScript code follows best practices, catches errors, and enforces coding standards with ESLint integration.
+- **JS Bundling**: Makes sure to bundle all of your JavaScript code into one file.
+- **Babel Support**: Write modern JavaScript code using the latest ECMAScript standards and let Babel transpile it for maximum browser compatibility.
 - **Iconfont Generation**: Generate custom icon fonts, allowing for easy integration of icons into your project.
 - **Code formatting**: Maintain consistent code formatting. Customize formatting rules using .prettierrc and ignore specific files or directories with .prettierignore.
 - **Optimization and Minification**: Optimize and minify your CSS, and JavaScript files for improved performance.
@@ -21,8 +22,13 @@ This Gulp Project Starter is a preconfigured boilerplate for quickly setting up 
 - Make sure to open the root directory of this project and open a terminal of your choice inside it.
 - Run `npm install gulp gulp-cli -g` command to install gulp and gulp-cli globally.
 - Run `npm install` command to install all of the npm packages used in this starter.
+- Install "Prettier" extension inside of your code editor. (optional - read the formatting disclaimer below for more info)
 
 Your starter is ready for use.
+
+### Formatting disclaimer
+
+For the best formatting experience, it is highly recommended to install the "Prettier" extension inside of your code editor. This proves particularly beneficial in group projects, as it guarantees uniform code formatting across team members, thereby avoiding numerous unnecessary Git conflicts. The code formatting rules are standardized and enforced through the ".prettierrc" and ".prettierignore" files, ensuring consistency for all team members involved. If you don't wish to use this type of formatting, skip installing the "Prettier" extension and feel free to delete ".prettierrc" and ".prettierignore" files.
 
 ### Commands
 
@@ -50,10 +56,8 @@ This command generates a new icon font using all the .svg icons from the 'src/as
 
 The command moves all subfolders from the 'src/assets' directory to the 'dist/assets' directory, except for the 'icons' folder, since it's only used to generate the icon font.
 
-## Credits
-
-- [Unsplash](https://unsplash.com/)
-
 ## Licence
 
 Completely free for use in all types of commercial or personal projects. Mentions are required when uploading or reposting any of original or modified code from this repo.
+
+Feel free to visit the original using this [link](https://www.github.com/vanjazeli/gulp-vanilla-starter).
