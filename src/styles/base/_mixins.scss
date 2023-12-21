@@ -18,44 +18,14 @@
 
 // utilities
 
-$desktop: 992px;
-$tablet: 768px;
-
-@mixin desktop {
-	@media screen and (min-width: calc(#{$desktop} + 1px)) {
-		@content;
-	}
-}
-
-@mixin tablet {
-	@media screen and (min-width: $tablet) and (max-width: $desktop) {
-		@content;
-	}
-}
-
-@mixin phone {
-	@media screen and (max-width: calc(#{$tablet} - 1px)) {
-		@content;
-	}
-}
-
-@mixin large {	// tablet and desktop
-	@media screen and (min-width: $tablet) {
-		@content;
-	}
-}
-
-@mixin small {	// phone and tablet
-	@media screen and (max-width: $desktop) {
-		@content;
-	}
-}
-
 @mixin hover {
-	&:hover {
-		@media screen and (min-width: calc(#{$desktop} + 1px)) {
+	@media (hover: hover) and (pointer: fine) {
+		.loaded &:hover {
 			@content;
 		}
+	}
+	.loaded &:focus-visible {
+		@content;
 	}
 }
 
