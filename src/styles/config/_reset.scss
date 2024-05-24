@@ -164,7 +164,7 @@ table {
 		outline: none;
 	}
 }
-
+// sass-lint:disable no-vendor-prefixes
 input[type='number'] {
 	appearance: none;
 	-moz-appearance: textfield;
@@ -173,3 +173,4 @@ input[type='number'] {
 		-webkit-appearance: none;
 	}
 }
+// sass-lint:enable no-vendor-prefixes
